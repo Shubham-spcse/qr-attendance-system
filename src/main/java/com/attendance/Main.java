@@ -4,8 +4,6 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
-import java.io.File;
-
 public class Main {
     public static void main(String[] args) throws LifecycleException {
         String port = System.getenv("PORT");
@@ -15,10 +13,13 @@ public class Main {
 
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(Integer.parseInt(port));
-
-        String webappDirLocation = "src/main/webapp/";
-        Context ctx = tomcat.addWebapp("/qr-attendance-system", new File(webappDirLocation).getAbsolutePath());
-
+        tomcat.getConnector();
+        
+        // Use the WAR file directly
+        String warPath = "target/qr-attendance-system.war";
+        Context ctx = tomcat.addWebapp("/qr-attendance-system", new java.io.File(warPath).getAbsolutePath());
+        
+        System.out.println("Starting Tomcat on port " + port);
         tomcat.start();
         tomcat.getServer().await();
     }
