@@ -5,4 +5,7 @@ nixPkgs = ["maven", "jdk17"]
 cmds = ["mvn clean package -DskipTests"]
 
 [phases.start]
-cmd = "java -jar target/qr-attendance-system.war --server.port=$PORT"
+cmd = "cd target && java -jar qr-attendance-system.war"
+
+[start]
+cmd = "cd target && java -jar qr-attendance-system.war"
