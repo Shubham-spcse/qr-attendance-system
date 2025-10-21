@@ -1,0 +1,21 @@
+# Build files
+target/
+*.war
+*.jar
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+
